@@ -9,6 +9,7 @@ public class BallController : MonoBehaviour
     private float speed;
 
     private bool started;
+    private bool gameOver;
 
     private Rigidbody rb;
 
@@ -22,6 +23,7 @@ public class BallController : MonoBehaviour
     void Start()
     {
         started = false; //Actually by default it's set to false
+        gameOver = false;
     }
 
     // Update is called once per frame
@@ -36,7 +38,17 @@ public class BallController : MonoBehaviour
             }
         }
         
-        if (Input.GetMouseButtonDown(0))
+        Debug.DrawRay(transform.position,Vector3.down,Color.red);
+
+        if (!Physics.Raycast(transform.position, Vector3.down, 1f))
+            //The output of this statement is a condition, if the raycast collide with the platform or not
+        {
+            gameOver = true;
+            rb.velocity = new Vector3(0, -25f, 0); //The ball falls down when gameover
+        }
+
+
+        if (Input.GetMouseButtonDown(0) && !gameOver)
         {
             SwitchDirection();
         }
