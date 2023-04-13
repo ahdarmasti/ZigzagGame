@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 2085548768729652116, guid: 0761cc78c7c40f14ca83d6421218c904, type: 3}
+  diamond: {fileID: 7262764098123673678, guid: 073eaf3dfae167f478220cff340388e9, type: 3}
   gameOver: 0
 --- !u!4 &494405645
 Transform:
