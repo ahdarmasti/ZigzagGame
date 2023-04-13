@@ -45,6 +45,8 @@ public class BallController : MonoBehaviour
         {
             gameOver = true;
             rb.velocity = new Vector3(0, -25f, 0); //The ball falls down when gameover
+
+            Camera.main.GetComponent<CameraFollow>().gameOver = true;
         }
 
 
