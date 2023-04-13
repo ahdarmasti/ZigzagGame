@@ -7,11 +7,12 @@ public class BallController : MonoBehaviour
 {
     [SerializeField]
     private float speed;
-
     private bool started;
     private bool gameOver;
 
     private Rigidbody rb;
+
+    public GameObject particle;
 
     void Awake()
     {
@@ -65,6 +66,16 @@ public class BallController : MonoBehaviour
         else if (rb.velocity.x > 0)
         {
             rb.velocity = new Vector3(0, 0, speed);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Diamond")
+        {
+            GameObject particleTemp = Instantiate (particle, collider.gameObject.transform.position, Quaternion.identity) as GameObject;
+            Destroy(collider.gameObject);
+            Destroy(particleTemp, 1f);
         }
     }
 }
