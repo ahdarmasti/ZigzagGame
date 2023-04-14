@@ -35,12 +35,12 @@ public class ScoreManager : MonoBehaviour
         
     }
     
-    void StartScore()
+    public void StartScore()
     {
         InvokeRepeating("IncreaseScore",0.1f,0.5f);
     }
     
-    void StopScore()
+    public void StopScore()
     {
         CancelInvoke("startScore");
         PlayerPrefs.SetInt("score",score);
