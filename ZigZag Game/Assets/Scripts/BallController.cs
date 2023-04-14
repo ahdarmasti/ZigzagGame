@@ -36,6 +36,8 @@ public class BallController : MonoBehaviour
             {
                 rb.velocity = new Vector3(speed, 0, 0);
                 started = true;
+                
+                GameManager.instance.StartGame();
             }
         }
         
@@ -48,6 +50,8 @@ public class BallController : MonoBehaviour
             rb.velocity = new Vector3(0, -25f, 0); //The ball falls down when gameover
 
             Camera.main.GetComponent<CameraFollow>().gameOver = true;
+            
+            GameManager.instance.GameOver();
         }
 
 
