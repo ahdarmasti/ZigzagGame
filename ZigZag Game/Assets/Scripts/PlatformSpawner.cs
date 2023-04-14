@@ -22,19 +22,25 @@ public class PlatformSpawner : MonoBehaviour
             SpawnPlatforms();
         }
         
-        InvokeRepeating("SpawnPlatforms",2f, 0.2f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.instance.gameOver == true) {
+            CancelInvoke("SpawnPlatforms");
+        }
+    }
+
+    public void StartSpawningPlatforms()
+    {
+        InvokeRepeating("SpawnPlatforms",0.1f, 0.2f);
     }
 
     void SpawnPlatforms()
     {
-        if (gameOver) { CancelInvoke("SpawnPlatforms");}
-        
+
         int random = Random.Range(0, 6);
         if (random < 3) {
             SpawnX();
